@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 05 - Funções</title>
+    <script>
+        // Função declarada
+        function cumprimentaHelton(nome, idade, cidade){
+            console.log(`Olá, ${nome} da cidade de ${cidade} que tem ${idade} anos, Seja bem vindo`)
+        }
+        cumprimentaHelton("Juliana", 25, "Cambé");
+        
+        // Função anonima -> vinculada a uma variavel, a variavel aponta pra função
+        let recuperaMarca = function (modelo){
+            if(modelo === "Gol"){
+                return "Volkswagen"
+            }else if(modelo === "Palio"){
+                return "Fiat"
+                }
+            else{
+                return "Não encontrado";
+                }
+        }
+        // let retorno = recuperaMarca();
+        let retorno = recuperaMarca("Gol");
+        console.log("Retorno: ", retorno);
+
+        // Arrow function simples
+        let superHeroi = () => console.log("Spiderman");
+        superHeroi();
+
+        // Arrow Function com passagem de parametros
+        let superHeroiUP = (nome) => console.log("Super", nome);
+        superHeroiUP("Helton");
+
+        // Arrow function com retorno 
+        let superPoder = () => "Deixar todos carecas!";
+        let retornoSP = superPoder();
+        console.log("O super poder é: ", retornoSP);
+
+        // Arrow function com passagem de parametros e retorno (completa)
+        let completa = (nome, poder) => `Super Herói: Super-${nome} com o super poder: ${poder}`;
+        console.log(completa("Helton", "Ser careca"));
+
+        //Arrow function com possagem unica de parametro | é a forma mais recomendada com um parametro
+        let simplesSimples = aluno => `Bem vindo ${aluno}`
+        console.log(simplesSimples("Alex"));
+        
+        //Arrow function com passagem unica de parametro e retorno
+        let dobrar = n => n * 2;
+        console.log(dobrar(10));
+
+        //Arrow function com multiplas linhas
+        let sabor = fruta => {
+            if(fruta === "Abacaxi"){
+                return "Azedo";
+            }else if (fruta === "Maça"){
+                return "Doce"
+            }
+            else{
+                return "Não encontrado"
+            }
+        }
+        console.log(sabor("Maça"));
+
+        //REST parameter em uma função declarada
+        function imprimeCarnes(...carnes){
+            //Função interna tambem declarada
+            function comoImprimeAsCarnes(acumulado, atual){
+                return `${acumulado} - ${atual}`;
+            }
+            return carnes.reduce(comoImprimeAsCarnes);
+        }
+        console.log(imprimeCarnes('Fraldinha', 'Ancho', 'Costela', 'Picanha', 'Brisket'));
+
+        //REST parameter com Arrow Function
+        let imprimeBebidas = (...bebidas) => bebidas.reduce((anterior, atual) => anterior + " - " + atual, "");
+        console.log(imprimeBebidas("Coca-Cola", "Vodka", "Cerveja", "Agua"))
+    </script>
+</head>
+<body>
+    <h4>Aula #05 - Funções Sinistras</h4>
+</body>
+</html>
